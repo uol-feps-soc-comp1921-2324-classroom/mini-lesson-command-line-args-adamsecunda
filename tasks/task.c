@@ -1,16 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
+/**
+ *argv[1] - first number to add
+ *argv[2] - second number to add
+ */
+int main(int argc, char *argv[])
+{
     int num1, num2;
-
-    // Prompt the user for input
-    printf("Enter the first number: ");
-    scanf("%d", &num1);
-
-    printf("Enter the second number: ");
-    scanf("%d", &num2);
-
-    // Calculate and print the sum
+    if (argc != 3)
+    {
+        printf("Error: Wrong number of arguments\n");
+        return 1;
+    }
+    // Cast string input to integer and validate
+    num1 = atoi(argv[1]);
+    if (num1 < 1)
+    {
+        printf("Error: First parameter is not a number\n");
+        return 2;
+    }
+    num2 = atoi(argv[2]);
+    if (num2 < 1)
+    {
+        printf("Error: Second parameter is not a number\n");
+        return 3;
+    }
+    // Add and print the sum
     int sum = num1 + num2;
     printf("Sum: %d\n", sum);
 
